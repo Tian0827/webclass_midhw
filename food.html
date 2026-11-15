@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物營養｜FITLIFE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="site-name" href="index.html">FITLIFE</a>
+            <nav>
+                <a href="index.html">首頁</a>
+                <a href="body.html">身體計算</a>
+                <a href="food.html" aria-current="page">食物營養</a>
+                <a href="training.html">訓練計畫</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-intro">
+            <h1>食物熱量與營養</h1>
+            <p>點選營養分類查看食物的每 100 公克數值，再選食物換算份量。</p>
+        </section>
+
+        <section>
+            <h2>依營養成分查詢</h2>
+            <ul class="nutrient-grid" role="list">
+                <li>
+                    <button type="button" class="photo-card" id="button-protein"
+                            aria-controls="nutrition-protein" aria-pressed="false" onclick="showNutrition('protein')">
+                        <img class="card-photo" src="images/蛋白質.jpg" alt="蛋白質來源食物示意圖">
+                        <span class="card-title">蛋白質</span>
+                        <span class="card-description">提供胺基酸，幫助身體建立和修復肌肉等組織。</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="photo-card" id="button-carbs"
+                            aria-controls="nutrition-carbs" aria-pressed="false" onclick="showNutrition('carbs')">
+                        <img class="card-photo" src="images/碳水.jpg" alt="碳水化合物來源食物示意圖">
+                        <span class="card-title">碳水化合物</span>
+                        <span class="card-description">消化後可提供葡萄糖，供應身體活動所需的能量。</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="photo-card" id="button-fat"
+                            aria-controls="nutrition-fat" aria-pressed="false" onclick="showNutrition('fat')">
+                        <img class="card-photo" src="images/脂肪.jpg" alt="脂肪來源食物示意圖">
+                        <span class="card-title">脂肪</span>
+                        <span class="card-description">提供能量，也幫助吸收維生素 A、D、E、K。</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="photo-card" id="button-fiber"
+                            aria-controls="nutrition-fiber" aria-pressed="false" onclick="showNutrition('fiber')">
+                        <img class="card-photo" src="images/膳食纖維.jpg" alt="膳食纖維來源食物示意圖">
+                        <span class="card-title">膳食纖維</span>
+                        <span class="card-description">幫助維持排便規律，也能增加飽足感。</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
+
+        <section class="panel nutrition-details" id="nutrition-details" hidden>
+            <h2>食物營養表</h2>
+            <p class="muted">數值以每 100 公克可食部分為基準。食材按烹調前的重量計算，白飯用熟重，橄欖油、花生醬和巧克力用成品重量。</p>
+            <p class="muted">重量比 22.5% 表示每 100 公克食物含 22.5 公克該營養素。</p>
+
+            <!-- 食物名稱與熱量的 id 使用同一個前綴，方便 JavaScript 讀取同一筆資料。 -->
+            <table class="data-table" id="nutrition-protein" hidden>
+                <caption>蛋白質來源</caption>
+                <thead>
+                    <tr><th scope="col">食物</th><th scope="col">熱量（大卡）</th><th scope="col">蛋白質（重量比）</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="chicken-name" onclick="selectFood('chicken')">鷄胸肉</button>
+                        </td>
+                        <td id="chicken-calories">120</td>
+                        <td>22.5%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="chicken-thigh-name" onclick="selectFood('chicken-thigh')">鷄腿肉（去皮）</button>
+                        </td>
+                        <td id="chicken-thigh-calories">121</td>
+                        <td>19.7%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="beef-name" onclick="selectFood('beef')">牛肉</button>
+                        </td>
+                        <td id="beef-calories">137</td>
+                        <td>21.4%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="pork-name" onclick="selectFood('pork')">豬肉</button>
+                        </td>
+                        <td id="pork-calories">128</td>
+                        <td>20.7%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="shrimp-name" onclick="selectFood('shrimp')">蝦仁</button>
+                        </td>
+                        <td id="shrimp-calories">85</td>
+                        <td>20.1%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="egg-name" onclick="selectFood('egg')">鷄蛋</button>
+                        </td>
+                        <td id="egg-calories">143</td>
+                        <td>12.6%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="nutrition-carbs" hidden>
+                <div class="carb-intro">
+                    <h3>快碳和慢碳有什麼差異？</h3>
+                    <p><strong>快碳</strong>通常指消化吸收較快的碳水化合物，常見於部分精製澱粉。</p>
+                    <p><strong>慢碳</strong>通常指消化吸收較慢的碳水化合物，常見於纖維較多、加工較少的食物。</p>
+                    <p>這裡用兩組食材方便查找。紫米、馬鈴薯和麵條的升糖速度會因品種、加工和料理方式而異。</p>
+                </div>
+
+                <div class="choice-buttons">
+                    <button type="button" class="action-button" id="carb-button-fast" aria-controls="table-fast-carbs"
+                            aria-pressed="true" onclick="showCarbTable('fast')">快碳</button>
+                    <button type="button" class="action-button" id="carb-button-slow" aria-controls="table-slow-carbs"
+                            aria-pressed="false" onclick="showCarbTable('slow')">慢碳</button>
+                </div>
+
+                <table class="data-table" id="table-fast-carbs">
+                    <caption>快碳食物</caption>
+                    <thead>
+                        <tr><th scope="col">食物</th><th scope="col">熱量（大卡）</th><th scope="col">碳水化合物（重量比）</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button type="button" class="food-choice" id="rice-name" onclick="selectFood('rice')">白米飯</button>
+                            </td>
+                            <td id="rice-calories">130</td>
+                            <td>28.2%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="food-choice" id="wheat-noodles-name" onclick="selectFood('wheat-noodles')">面</button>
+                            </td>
+                            <td id="wheat-noodles-calories">384</td>
+                            <td>71.3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="data-table" id="table-slow-carbs" hidden>
+                    <caption>慢碳食物</caption>
+                    <thead>
+                        <tr><th scope="col">食物</th><th scope="col">熱量（大卡）</th><th scope="col">碳水化合物（重量比）</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button type="button" class="food-choice" id="purple-rice-name" onclick="selectFood('purple-rice')">紫米</button>
+                            </td>
+                            <td id="purple-rice-calories">350</td>
+                            <td>70.1%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="food-choice" id="potato-name" onclick="selectFood('potato')">馬鈴薯</button>
+                            </td>
+                            <td id="potato-calories">77</td>
+                            <td>17.5%</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="food-choice" id="oats-name" onclick="selectFood('oats')">燕麥</button>
+                            </td>
+                            <td id="oats-calories">389</td>
+                            <td>66.3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="data-table" id="nutrition-fat" hidden>
+                <caption>脂肪來源</caption>
+                <thead>
+                    <tr><th scope="col">食物</th><th scope="col">熱量（大卡）</th><th scope="col">脂肪（重量比）</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="oil-name" onclick="selectFood('oil')">橄欖油</button>
+                        </td>
+                        <td id="oil-calories">884</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="peanuts-name" onclick="selectFood('peanuts')">生花生</button>
+                        </td>
+                        <td id="peanuts-calories">567</td>
+                        <td>49.2%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="peanut-butter-name" onclick="selectFood('peanut-butter')">花生醬</button>
+                        </td>
+                        <td id="peanut-butter-calories">598</td>
+                        <td>51.4%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="chocolate-name" onclick="selectFood('chocolate')">純巧克力（無糖）</button>
+                        </td>
+                        <td id="chocolate-calories">642</td>
+                        <td>52.3%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="avocado-name" onclick="selectFood('avocado')">酪梨</button>
+                        </td>
+                        <td id="avocado-calories">160</td>
+                        <td>14.7%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="data-table" id="nutrition-fiber" hidden>
+                <caption>膳食纖維來源</caption>
+                <thead>
+                    <tr><th scope="col">食物</th><th scope="col">熱量（大卡）</th><th scope="col">膳食纖維（重量比）</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="cauliflower-name" onclick="selectFood('cauliflower')">花椰菜</button>
+                        </td>
+                        <td id="cauliflower-calories">25</td>
+                        <td>2.0%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="spinach-name" onclick="selectFood('spinach')">菠菜</button>
+                        </td>
+                        <td id="spinach-calories">23</td>
+                        <td>2.2%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="carrot-name" onclick="selectFood('carrot')">胡蘿蔔</button>
+                        </td>
+                        <td id="carrot-calories">41</td>
+                        <td>2.8%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="food-choice" id="cabbage-name" onclick="selectFood('cabbage')">高麗菜</button>
+                        </td>
+                        <td id="cabbage-calories">25</td>
+                        <td>2.5%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <section class="portion-calculator">
+                <h3>份量熱量換算</h3>
+                <p class="muted" id="selected-food" role="status">請先點選表格中的食物名稱。</p>
+                <form class="portion-form" onsubmit="calculateCalories(); return false;">
+                    <div class="field">
+                        <label for="food-weight">食物份量（公克）</label>
+                        <input id="food-weight" type="number" min="0.1" step="any" required>
+                    </div>
+                    <button class="action-button" type="submit">換算熱量</button>
+                </form>
+                <p class="result" id="calorie-result" role="status">這份食物的熱量會顯示在這裡。</p>
+            </section>
+
+            <p class="source">數值為參考值，實際營養成分會因品種、部位和品牌而異。</p>
+            <p class="source">
+                <a href="https://fdc.nal.usda.gov/">美國農業部食品成分資料庫</a> ·
+                <a href="https://data.gov.tw/dataset/8543">食藥署食物營養成分資料（紫米）</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">FITLIFE 健身指南</footer>
+    <script src="script.js"></script>
+</body>
+</html>

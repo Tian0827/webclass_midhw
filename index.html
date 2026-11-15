@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁｜FITLIFE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="site-name" href="index.html">FITLIFE</a>
+            <nav>
+                <a href="index.html" aria-current="page">首頁</a>
+                <a href="body.html">身體計算</a>
+                <a href="food.html">食物營養</a>
+                <a href="training.html">訓練計畫</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-intro">
+            <h1>你的個人健身指南</h1>
+            <p>從了解身體數值、認識食物營養，到安排每週訓練，FITLIFE 陪你掌握健身的基本知識。</p>
+        </section>
+
+        <div class="home-links">
+            <a class="panel home-link" href="body.html">
+                <strong>身體計算</strong>
+                <span>計算 BMI 與基礎代謝。</span>
+            </a>
+            <a class="panel home-link" href="food.html">
+                <strong>食物營養</strong>
+                <span>查詢營養成分，換算食物熱量。</span>
+            </a>
+            <a class="panel home-link" href="training.html">
+                <strong>訓練計畫</strong>
+                <span>查看每週 3 天或 4 天的訓練範例。</span>
+            </a>
+        </div>
+
+        <section class="fitness-basics">
+            <h2>四大健身基礎知識</h2>
+            <!-- tabindex="0" 讓使用者能用 Tab 移到卡片。 -->
+            <div class="basics-grid">
+                <article class="photo-card basics-card strength-card" tabindex="0">
+                    <img class="card-photo" src="images/力量訓練.jpg" alt="力量訓練示意圖">
+                    <h3 class="card-title">力量訓練</h3>
+                    <p class="card-description">利用自體重量、啞鈴或彈力帶提供阻力。可以從椅子坐站、伏地挺身或划船開始，先熟悉動作，再逐步增加阻力或次數。</p>
+                </article>
+                <article class="photo-card basics-card cardio-card" tabindex="0">
+                    <img class="card-photo" src="images/有氧運動.jpg" alt="有氧運動示意圖">
+                    <h3 class="card-title">有氧運動</h3>
+                    <p class="card-description">快走、騎車和游泳都是常見的有氧活動。中等強度下，呼吸會比平常快，但通常還能交談。可以先從容易持續的活動開始。</p>
+                </article>
+                <article class="photo-card basics-card balance-card" tabindex="0">
+                    <img class="card-photo" src="images/均衡營養.jpg" alt="均衡飲食示意圖">
+                    <h3 class="card-title">均衡營養</h3>
+                    <p class="card-description">把全穀雜糧、蔬果與豆魚蛋肉搭配起來，並適量攝取油脂。碳水化合物提供活動能量，蛋白質是身體修復組織的原料。</p>
+                </article>
+                <article class="photo-card basics-card rest-card" tabindex="0">
+                    <img class="card-photo" src="images/恢復休息.jpg" alt="休息與恢復示意圖">
+                    <h3 class="card-title">休息恢復</h3>
+                    <p class="card-description">在訓練日之間安排休息，並維持規律的睡眠。休息日可以散步或做輕鬆的活動，讓下一次訓練更容易維持原本的節奏。</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">FITLIFE 健身指南</footer>
+</body>
+</html>

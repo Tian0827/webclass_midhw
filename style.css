@@ -1,0 +1,524 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f7f8f2;
+    color: #173329;
+    font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+    line-height: 1.65;
+}
+
+.container {
+    width: 92%;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dbe5da;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    min-height: 72px;
+}
+
+.site-name {
+    color: #174b38;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 4px;
+}
+
+nav a {
+    padding: 8px 14px;
+    border-radius: 5px;
+    color: #30483e;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+nav a[aria-current="page"] {
+    background-color: #e2efe5;
+    color: #164630;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background-color: #1b6246;
+    color: #ffffff;
+}
+
+main {
+    min-height: 76vh;
+    padding-bottom: 56px;
+}
+
+.page-intro {
+    margin: 28px 0;
+    padding: 28px 34px;
+    border: 1px solid #cbded0;
+    border-left: 5px solid #36835a;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #deeee0, #edeee0);
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 42px;
+    line-height: 1.3;
+}
+
+.page-intro p {
+    margin: 10px 0 0;
+    color: #40594c;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+
+h3 {
+    margin-bottom: 6px;
+    font-size: 19px;
+}
+
+.panel {
+    padding: 22px;
+    border: 1px solid #d6e2d7;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.calculator-grid,
+.form-grid,
+.nutrient-grid,
+.basics-grid,
+.training-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.calculator-grid {
+    align-items: start;
+}
+
+.home-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.home-link {
+    color: #174b38;
+    text-decoration: none;
+}
+
+.home-link strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+
+.home-link:hover,
+.home-link:focus-visible {
+    border-color: #36835a;
+    background-color: #edf5eb;
+}
+
+.fitness-basics {
+    margin-top: 30px;
+}
+
+.basics-grid {
+    gap: 20px;
+}
+
+.training-card p {
+    margin-bottom: 0;
+    color: #456054;
+}
+
+.training-plan {
+    margin-top: 24px;
+}
+
+.choice-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.choice-buttons .action-button[aria-pressed="false"] {
+    background-color: #e2efe5;
+    color: #174b38;
+}
+
+.choice-buttons .action-button:hover {
+    background-color: #164633;
+    color: #ffffff;
+}
+
+.form-grid {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 10px;
+    border: 1px solid #91ac9a;
+    border-radius: 5px;
+    background-color: #fbfdfa;
+    color: #173329;
+    font: inherit;
+}
+
+.action-button,
+button.photo-card,
+.food-choice {
+    cursor: pointer;
+    font: inherit;
+}
+
+.action-button {
+    padding: 9px 16px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #236247;
+    color: #fff;
+    font-weight: bold;
+}
+
+.action-button:hover {
+    background-color: #164633;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #a45815;
+    outline-offset: 3px;
+}
+
+.result {
+    margin: 16px 0;
+    padding: 10px 12px;
+    border-left: 3px solid #36835a;
+    background-color: #edf5eb;
+    font-weight: bold;
+}
+
+.muted,
+.source {
+    color: #456054;
+}
+
+.source {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.source a,
+.food-choice {
+    color: #1a6345;
+    text-decoration: underline;
+}
+
+.source a:hover,
+.food-choice:hover {
+    color: #113c2d;
+}
+
+.bmi-table,
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+table caption {
+    margin-bottom: 5px;
+    color: #173329;
+    font-weight: bold;
+    text-align: left;
+}
+
+.bmi-table th,
+.bmi-table td,
+.data-table th,
+.data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #dbe5da;
+    text-align: left;
+}
+
+.data-table thead {
+    background-color: #e2efe5;
+}
+
+.nutrient-grid {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.photo-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 155px;
+    padding: 20px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #163e32, #326650);
+    color: #ffffff;
+    text-align: left;
+}
+
+#button-carbs {
+    background: linear-gradient(135deg, #334222, #5e6c3e);
+}
+
+#button-fat {
+    background: linear-gradient(135deg, #503b27, #745834);
+}
+
+#button-fiber {
+    background: linear-gradient(135deg, #1b4741, #356e62);
+}
+
+.basics-card {
+    min-height: 245px;
+    padding: 28px;
+    justify-content: center;
+}
+
+.strength-card {
+    background: linear-gradient(135deg, #113b2d, #2c654a);
+}
+
+.cardio-card {
+    background: linear-gradient(135deg, #173d3d, #37746a);
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #344321, #5e703e);
+}
+
+.rest-card {
+    background: linear-gradient(135deg, #323f35, #596b5c);
+}
+
+/* 照片在下層，標題與說明在上層，所以模糊只會套用在照片。 */
+.card-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.52);
+    transition: filter 0.2s;
+}
+
+.card-title,
+.card-description {
+    position: relative;
+    display: block;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card-description {
+    margin: 6px 0 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.photo-card:hover {
+    border-color: #8dab91;
+}
+
+.photo-card:hover .card-photo,
+.photo-card:focus-visible .card-photo,
+.photo-card[aria-pressed="true"] .card-photo {
+    filter: brightness(0.4) blur(5px);
+}
+
+.photo-card:hover .card-description,
+.photo-card:focus-visible .card-description,
+.photo-card[aria-pressed="true"] .card-description {
+    opacity: 1;
+}
+
+.photo-card[aria-pressed="true"] {
+    outline: 3px solid #39875f;
+    outline-offset: 3px;
+}
+
+.basics-card:focus-visible {
+    outline: 3px solid #a45815;
+    outline-offset: 3px;
+}
+
+.basics-card .card-title {
+    font-size: 29px;
+}
+
+.nutrition-details {
+    margin-top: 28px;
+}
+
+.carb-intro {
+    margin-bottom: 18px;
+    padding: 14px;
+    border-left: 3px solid #36835a;
+    background-color: #edf5eb;
+}
+
+.carb-intro p {
+    margin-bottom: 6px;
+}
+
+.carb-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.food-choice {
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+}
+
+.portion-calculator {
+    margin-top: 24px;
+}
+
+.portion-form {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.portion-form .field {
+    width: 180px;
+}
+
+.site-footer {
+    padding: 16px;
+    border-top: 1px solid #d6e2d7;
+    background-color: #e8efe5;
+    color: #40594c;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 650px) {
+    .header-content {
+        flex-direction: column;
+        gap: 4px;
+        padding: 10px 0;
+    }
+
+    nav a {
+        padding: 7px 8px;
+        font-size: 14px;
+    }
+
+    .page-intro {
+        margin: 20px 0;
+        padding: 19px 16px;
+    }
+
+    h1 {
+        font-size: 31px;
+    }
+
+    .calculator-grid,
+    .home-links {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+
+    .photo-card {
+        padding: 12px;
+    }
+
+    .card-title,
+    .basics-card .card-title {
+        font-size: 20px;
+    }
+
+    .basics-grid {
+        gap: 12px;
+    }
+
+    .basics-card {
+        min-height: 220px;
+        font-size: 14px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 6px;
+        font-size: 14px;
+    }
+}
+
+/* 沒有滑鼠懸停的裝置會直接顯示首頁卡片說明。 */
+@media (hover: none) {
+    .basics-card .card-description {
+        opacity: 1;
+    }
+
+    .basics-card .card-photo {
+        filter: brightness(0.4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-photo,
+    .card-description {
+        transition: none;
+    }
+}

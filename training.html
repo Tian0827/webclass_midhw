@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訓練計畫｜FITLIFE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="site-name" href="index.html">FITLIFE</a>
+            <nav>
+                <a href="index.html">首頁</a>
+                <a href="body.html">身體計算</a>
+                <a href="food.html">食物營養</a>
+                <a href="training.html" aria-current="page">訓練計畫</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-intro">
+            <h1>訓練計畫</h1>
+            <p>認識四個常見的訓練部位，再依每週能安排的天數查看課表範例。</p>
+        </section>
+
+        <section>
+            <h2>依部位認識訓練動作</h2>
+            <div class="training-grid">
+                <div class="panel training-card">
+                    <h3>胸部訓練</h3>
+                    <p>以向前推的動作為主，例如伏地挺身與啞鈴臥推。</p>
+                </div>
+                <div class="panel training-card">
+                    <h3>背部訓練</h3>
+                    <p>練習把重量拉向身體，例如啞鈴划船與滑輪下拉。</p>
+                </div>
+                <div class="panel training-card">
+                    <h3>腿部訓練</h3>
+                    <p>練習蹲起或伸展髖部，例如深蹲與臀橋，主要運用大腿與臀部。</p>
+                </div>
+                <div class="panel training-card">
+                    <h3>肩部訓練</h3>
+                    <p>練習把重量往上推或向兩側抬起，例如啞鈴肩推與側平舉。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel training-plan">
+            <h2>每週訓練安排</h2>
+            <p class="muted">選擇每週訓練天數，查看對應的示例課表。</p>
+            <div class="choice-buttons">
+                <button type="button" class="action-button" id="plan-button-three" aria-controls="plan-three"
+                        aria-pressed="false" onclick="showTrainingPlan(3)">每週 3 天</button>
+                <button type="button" class="action-button" id="plan-button-four" aria-controls="plan-four"
+                        aria-pressed="false" onclick="showTrainingPlan(4)">每週 4 天</button>
+            </div>
+
+            <table class="data-table" id="plan-three" hidden>
+                <caption>每週 3 天課表</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">星期</th>
+                        <th scope="col">部位</th>
+                        <th scope="col">示例動作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">週一</th><td>胸部、肩部</td><td>伏地挺身、啞鈴臥推、啞鈴肩推</td></tr>
+                    <tr><th scope="row">週三</th><td>背部</td><td>啞鈴划船、滑輪下拉</td></tr>
+                    <tr><th scope="row">週五</th><td>腿部</td><td>深蹲、臀橋</td></tr>
+                </tbody>
+            </table>
+
+            <table class="data-table" id="plan-four" hidden>
+                <caption>每週 4 天課表</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">星期</th>
+                        <th scope="col">部位</th>
+                        <th scope="col">示例動作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">週一</th><td>胸部</td><td>伏地挺身、啞鈴臥推</td></tr>
+                    <tr><th scope="row">週二</th><td>背部</td><td>啞鈴划船、滑輪下拉</td></tr>
+                    <tr><th scope="row">週四</th><td>腿部</td><td>深蹲、臀橋</td></tr>
+                    <tr><th scope="row">週六</th><td>肩部</td><td>啞鈴肩推、側平舉</td></tr>
+                </tbody>
+            </table>
+
+            <p class="source">課表為一般肌力訓練示例。<a href="https://www.cdc.gov/physical-activity-basics/adding-adults/what-counts.html">美國 CDC 肌力活動說明</a></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">FITLIFE 健身指南</footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身體計算｜FITLIFE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="site-name" href="index.html">FITLIFE</a>
+            <nav>
+                <a href="index.html">首頁</a>
+                <a href="body.html" aria-current="page">身體計算</a>
+                <a href="food.html">食物營養</a>
+                <a href="training.html">訓練計畫</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-intro">
+            <h1>身體數值計算</h1>
+            <p>輸入基本資料，查看成人身體質量指數與每日靜息熱量消耗估算。</p>
+        </section>
+
+        <div class="calculator-grid">
+            <section class="panel">
+                <h2>BMI 計算器</h2>
+                <p class="muted">用身高與體重計算身體質量指數。</p>
+                <!-- 表單先檢查必填欄位，再執行函式。return false 讓頁面留在原處。 -->
+                <form onsubmit="calculateBMI(); return false;">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="bmi-height">身高（公分）</label>
+                            <input id="bmi-height" type="number" min="0.1" step="any" required>
+                        </div>
+                        <div class="field">
+                            <label for="bmi-weight">體重（公斤）</label>
+                            <input id="bmi-weight" type="number" min="0.1" step="any" required>
+                        </div>
+                    </div>
+                    <button class="action-button" type="submit">計算 BMI</button>
+                </form>
+                <p class="result" id="bmi-result" role="status">BMI 與體位分類會顯示在這裡。</p>
+                <table class="bmi-table">
+                    <caption>成人 BMI 分類</caption>
+                    <tbody>
+                        <tr><th scope="row">過輕</th><td>低於 18.5</td></tr>
+                        <tr><th scope="row">正常</th><td>18.5 以上，未滿 24</td></tr>
+                        <tr><th scope="row">過重</th><td>24 以上，未滿 27</td></tr>
+                        <tr><th scope="row">肥胖</th><td>27 以上</td></tr>
+                    </tbody>
+                </table>
+                <p class="source"><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=1757">國民健康署成人體位標準</a></p>
+            </section>
+
+            <section class="panel">
+                <h2>基礎代謝計算器</h2>
+                <p class="muted">用 Mifflin–St Jeor 公式估計身體在休息時的能量消耗。</p>
+                <form onsubmit="calculateBMR(); return false;">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="bmr-height">身高（公分）</label>
+                            <input id="bmr-height" type="number" min="0.1" step="any" required>
+                        </div>
+                        <div class="field">
+                            <label for="bmr-weight">體重（公斤）</label>
+                            <input id="bmr-weight" type="number" min="0.1" step="any" required>
+                        </div>
+                        <div class="field">
+                            <label for="bmr-age">年齡（歲）</label>
+                            <input id="bmr-age" type="number" min="18" step="1" required>
+                        </div>
+                        <div class="field">
+                            <label for="bmr-sex">公式使用的性別</label>
+                            <select id="bmr-sex" required>
+                                <option value="">請選擇</option>
+                                <option value="male">男</option>
+                                <option value="female">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="action-button" type="submit">計算基礎代謝</button>
+                </form>
+                <p class="result" id="bmr-result" role="status">每日靜息耗能的估算值會顯示在這裡。</p>
+                <p class="source"><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/">Mifflin–St Jeor 公式原始研究</a></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">FITLIFE 健身指南</footer>
+    <script src="script.js"></script>
+</body>
+</html>
