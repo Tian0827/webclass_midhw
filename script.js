@@ -1,11 +1,11 @@
 function calculateBMI() {
-    // 表單的 value 是文字，用 Number() 轉成數字。BMI 公式使用公尺。
+
     let height = Number(document.getElementById("bmi-height").value) / 100;
     let weight = Number(document.getElementById("bmi-weight").value);
     let bmi = weight / (height * height);
     let category;
 
-    // 先用原始數值分類，最後才用 toFixed(2) 顯示小數點後兩位。
+
     if (bmi < 18.5) {
         category = "過輕";
     } else if (bmi < 24) {
@@ -40,7 +40,7 @@ function calculateBMR() {
     }
 }
 
-// 記住目前選擇的食物，供下方的份量換算使用。
+
 let selectedFoodName = "";
 let caloriesPer100g = 0;
 
@@ -54,7 +54,7 @@ function showNutrition(selectedCategory) {
         let isSelected = category === selectedCategory;
 
         panel.hidden = !isSelected;
-        // setAttribute 更新按鈕的「已按下」狀態，供畫面與輔助工具讀取。
+
         button.setAttribute("aria-pressed", isSelected);
     }
 
@@ -103,7 +103,6 @@ function calculateCalories() {
 function showTrainingPlan(days) {
     let showThreeDays = days === 3;
 
-    // hidden 為 true 時會隱藏表格。兩個表格使用相反的狀態。
     document.getElementById("plan-three").hidden = !showThreeDays;
     document.getElementById("plan-four").hidden = showThreeDays;
     document.getElementById("plan-button-three").setAttribute("aria-pressed", showThreeDays);
