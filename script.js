@@ -1,11 +1,11 @@
 function calculateBMI() {
-
+    
     let height = Number(document.getElementById("bmi-height").value) / 100;
     let weight = Number(document.getElementById("bmi-weight").value);
     let bmi = weight / (height * height);
     let category;
 
-
+    
     if (bmi < 18.5) {
         category = "過輕";
     } else if (bmi < 24) {
@@ -42,7 +42,9 @@ function calculateBMR() {
 
 
 let selectedFoodName = "";
+let selectedNutrientName = "";
 let caloriesPer100g = 0;
+let nutrientPer100g = 0;
 
 function showNutrition(selectedCategory) {
     let categories = ["protein", "carbs", "fat", "fiber"];
@@ -54,11 +56,12 @@ function showNutrition(selectedCategory) {
         let isSelected = category === selectedCategory;
 
         panel.hidden = !isSelected;
-
+        
         button.setAttribute("aria-pressed", isSelected);
     }
 
     document.getElementById("nutrition-details").hidden = false;
+    selectedNutrientName = document.getElementById("nutrient-label-" + selectedCategory).textContent;
     resetFoodSelection();
 }
 
@@ -75,17 +78,19 @@ function showCarbTable(type) {
 function resetFoodSelection() {
     selectedFoodName = "";
     caloriesPer100g = 0;
+    nutrientPer100g = 0;
     document.getElementById("selected-food").innerHTML = "請先點選表格中的食物名稱。";
-    document.getElementById("calorie-result").innerHTML = "這份食物的熱量會顯示在這裡。";
+    document.getElementById("calorie-result").innerHTML = "這份食物的熱量與營養含量會顯示在這裡。";
 }
 
 function selectFood(foodId) {
     selectedFoodName = document.getElementById(foodId + "-name").textContent;
     caloriesPer100g = Number(document.getElementById(foodId + "-calories").textContent);
+    nutrientPer100g = Number(document.getElementById(foodId + "-nutrient").textContent);
 
     document.getElementById("selected-food").textContent =
         "已選擇" + selectedFoodName + "，每 100 公克 " + caloriesPer100g + " 大卡。";
-    document.getElementById("calorie-result").innerHTML = "這份食物的熱量會顯示在這裡。";
+    document.getElementById("calorie-result").innerHTML = "這份食物的熱量與營養含量會顯示在這裡。";
 }
 
 function calculateCalories() {
@@ -95,14 +100,18 @@ function calculateCalories() {
     if (selectedFoodName === "") {
         result.innerHTML = "請先點選表格中的食物名稱。";
     } else {
-        let calories = grams / 100 * caloriesPer100g;
-        result.textContent = grams + " 公克的" + selectedFoodName + "約有 " + calories.toFixed(1) + " 大卡。";
+        let portion = grams / 100;
+        let calories = portion * caloriesPer100g;
+        let nutrientGrams = portion * nutrientPer100g;
+        result.textContent = grams + " 公克的" + selectedFoodName + "約有 " + calories.toFixed(1) + " 大卡，"
+            + selectedNutrientName + "約 " + nutrientGrams.toFixed(1) + " 公克。";
     }
 }
 
 function showTrainingPlan(days) {
     let showThreeDays = days === 3;
 
+    
     document.getElementById("plan-three").hidden = !showThreeDays;
     document.getElementById("plan-four").hidden = showThreeDays;
     document.getElementById("plan-button-three").setAttribute("aria-pressed", showThreeDays);
