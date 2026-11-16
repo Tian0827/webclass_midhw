@@ -32,7 +32,7 @@
                     <button type="button" class="photo-card" id="button-protein"
                             aria-controls="nutrition-protein" aria-pressed="false" onclick="showNutrition('protein')">
                         <img class="card-photo" src="images/蛋白質.jpg" alt="蛋白質來源食物示意圖">
-                        <span class="card-title">蛋白質</span>
+                        <span class="card-title" id="nutrient-label-protein">蛋白質</span>
                         <span class="card-description">提供胺基酸，幫助身體建立和修復肌肉等組織。</span>
                     </button>
                 </li>
@@ -40,7 +40,7 @@
                     <button type="button" class="photo-card" id="button-carbs"
                             aria-controls="nutrition-carbs" aria-pressed="false" onclick="showNutrition('carbs')">
                         <img class="card-photo" src="images/碳水.jpg" alt="碳水化合物來源食物示意圖">
-                        <span class="card-title">碳水化合物</span>
+                        <span class="card-title" id="nutrient-label-carbs">碳水化合物</span>
                         <span class="card-description">消化後可提供葡萄糖，供應身體活動所需的能量。</span>
                     </button>
                 </li>
@@ -48,7 +48,7 @@
                     <button type="button" class="photo-card" id="button-fat"
                             aria-controls="nutrition-fat" aria-pressed="false" onclick="showNutrition('fat')">
                         <img class="card-photo" src="images/脂肪.jpg" alt="脂肪來源食物示意圖">
-                        <span class="card-title">脂肪</span>
+                        <span class="card-title" id="nutrient-label-fat">脂肪</span>
                         <span class="card-description">提供能量，也幫助吸收維生素 A、D、E、K。</span>
                     </button>
                 </li>
@@ -56,7 +56,7 @@
                     <button type="button" class="photo-card" id="button-fiber"
                             aria-controls="nutrition-fiber" aria-pressed="false" onclick="showNutrition('fiber')">
                         <img class="card-photo" src="images/膳食纖維.jpg" alt="膳食纖維來源食物示意圖">
-                        <span class="card-title">膳食纖維</span>
+                        <span class="card-title" id="nutrient-label-fiber">膳食纖維</span>
                         <span class="card-description">幫助維持排便規律，也能增加飽足感。</span>
                     </button>
                 </li>
@@ -68,7 +68,7 @@
             <p class="muted">數值以每 100 公克可食部分為基準。食材按烹調前的重量計算，白飯用熟重，橄欖油、花生醬和巧克力用成品重量。</p>
             <p class="muted">重量比 22.5% 表示每 100 公克食物含 22.5 公克該營養素。</p>
 
-        
+            
             <table class="data-table" id="nutrition-protein" hidden>
                 <caption>蛋白質來源</caption>
                 <thead>
@@ -80,42 +80,42 @@
                             <button type="button" class="food-choice" id="chicken-name" onclick="selectFood('chicken')">鷄胸肉</button>
                         </td>
                         <td id="chicken-calories">120</td>
-                        <td>22.5%</td>
+                        <td><span id="chicken-nutrient">22.5</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="chicken-thigh-name" onclick="selectFood('chicken-thigh')">鷄腿肉（去皮）</button>
                         </td>
                         <td id="chicken-thigh-calories">121</td>
-                        <td>19.7%</td>
+                        <td><span id="chicken-thigh-nutrient">19.7</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="beef-name" onclick="selectFood('beef')">牛肉</button>
                         </td>
                         <td id="beef-calories">137</td>
-                        <td>21.4%</td>
+                        <td><span id="beef-nutrient">21.4</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="pork-name" onclick="selectFood('pork')">豬肉</button>
                         </td>
                         <td id="pork-calories">128</td>
-                        <td>20.7%</td>
+                        <td><span id="pork-nutrient">20.7</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="shrimp-name" onclick="selectFood('shrimp')">蝦仁</button>
                         </td>
                         <td id="shrimp-calories">85</td>
-                        <td>20.1%</td>
+                        <td><span id="shrimp-nutrient">20.1</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="egg-name" onclick="selectFood('egg')">鷄蛋</button>
                         </td>
                         <td id="egg-calories">143</td>
-                        <td>12.6%</td>
+                        <td><span id="egg-nutrient">12.6</span>%</td>
                     </tr>
                 </tbody>
             </table>
@@ -146,14 +146,14 @@
                                 <button type="button" class="food-choice" id="rice-name" onclick="selectFood('rice')">白米飯</button>
                             </td>
                             <td id="rice-calories">130</td>
-                            <td>28.2%</td>
+                            <td><span id="rice-nutrient">28.2</span>%</td>
                         </tr>
                         <tr>
                             <td>
                                 <button type="button" class="food-choice" id="wheat-noodles-name" onclick="selectFood('wheat-noodles')">面</button>
                             </td>
                             <td id="wheat-noodles-calories">384</td>
-                            <td>71.3%</td>
+                            <td><span id="wheat-noodles-nutrient">71.3</span>%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -169,21 +169,21 @@
                                 <button type="button" class="food-choice" id="purple-rice-name" onclick="selectFood('purple-rice')">紫米</button>
                             </td>
                             <td id="purple-rice-calories">350</td>
-                            <td>70.1%</td>
+                            <td><span id="purple-rice-nutrient">70.1</span>%</td>
                         </tr>
                         <tr>
                             <td>
                                 <button type="button" class="food-choice" id="potato-name" onclick="selectFood('potato')">馬鈴薯</button>
                             </td>
                             <td id="potato-calories">77</td>
-                            <td>17.5%</td>
+                            <td><span id="potato-nutrient">17.5</span>%</td>
                         </tr>
                         <tr>
                             <td>
                                 <button type="button" class="food-choice" id="oats-name" onclick="selectFood('oats')">燕麥</button>
                             </td>
                             <td id="oats-calories">389</td>
-                            <td>66.3%</td>
+                            <td><span id="oats-nutrient">66.3</span>%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -200,35 +200,35 @@
                             <button type="button" class="food-choice" id="oil-name" onclick="selectFood('oil')">橄欖油</button>
                         </td>
                         <td id="oil-calories">884</td>
-                        <td>100%</td>
+                        <td><span id="oil-nutrient">100</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="peanuts-name" onclick="selectFood('peanuts')">生花生</button>
                         </td>
                         <td id="peanuts-calories">567</td>
-                        <td>49.2%</td>
+                        <td><span id="peanuts-nutrient">49.2</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="peanut-butter-name" onclick="selectFood('peanut-butter')">花生醬</button>
                         </td>
                         <td id="peanut-butter-calories">598</td>
-                        <td>51.4%</td>
+                        <td><span id="peanut-butter-nutrient">51.4</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="chocolate-name" onclick="selectFood('chocolate')">純巧克力（無糖）</button>
                         </td>
                         <td id="chocolate-calories">642</td>
-                        <td>52.3%</td>
+                        <td><span id="chocolate-nutrient">52.3</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="avocado-name" onclick="selectFood('avocado')">酪梨</button>
                         </td>
                         <td id="avocado-calories">160</td>
-                        <td>14.7%</td>
+                        <td><span id="avocado-nutrient">14.7</span>%</td>
                     </tr>
                 </tbody>
             </table>
@@ -244,43 +244,43 @@
                             <button type="button" class="food-choice" id="cauliflower-name" onclick="selectFood('cauliflower')">花椰菜</button>
                         </td>
                         <td id="cauliflower-calories">25</td>
-                        <td>2.0%</td>
+                        <td><span id="cauliflower-nutrient">2.0</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="spinach-name" onclick="selectFood('spinach')">菠菜</button>
                         </td>
                         <td id="spinach-calories">23</td>
-                        <td>2.2%</td>
+                        <td><span id="spinach-nutrient">2.2</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="carrot-name" onclick="selectFood('carrot')">胡蘿蔔</button>
                         </td>
                         <td id="carrot-calories">41</td>
-                        <td>2.8%</td>
+                        <td><span id="carrot-nutrient">2.8</span>%</td>
                     </tr>
                     <tr>
                         <td>
                             <button type="button" class="food-choice" id="cabbage-name" onclick="selectFood('cabbage')">高麗菜</button>
                         </td>
                         <td id="cabbage-calories">25</td>
-                        <td>2.5%</td>
+                        <td><span id="cabbage-nutrient">2.5</span>%</td>
                     </tr>
                 </tbody>
             </table>
 
             <section class="portion-calculator">
-                <h3>份量熱量換算</h3>
+                <h3>份量換算</h3>
                 <p class="muted" id="selected-food" role="status">請先點選表格中的食物名稱。</p>
                 <form class="portion-form" onsubmit="calculateCalories(); return false;">
                     <div class="field">
                         <label for="food-weight">食物份量（公克）</label>
                         <input id="food-weight" type="number" min="0.1" step="any" required>
                     </div>
-                    <button class="action-button" type="submit">換算熱量</button>
+                    <button class="action-button" type="submit">換算熱量與營養</button>
                 </form>
-                <p class="result" id="calorie-result" role="status">這份食物的熱量會顯示在這裡。</p>
+                <p class="result" id="calorie-result" role="status">這份食物的熱量與營養含量會顯示在這裡。</p>
             </section>
 
             <p class="source">數值為參考值，實際營養成分會因品種、部位和品牌而異。</p>
